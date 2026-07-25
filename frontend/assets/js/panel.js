@@ -27,7 +27,79 @@ function showPanelAlert(message, type = "danger") {
   el.classList.remove("d-none");
 }
 
-// ---------- Load & render all records ----------
+/* ---------------------------------------------------------
+   Drag & Drop + File Preview Logic
+--------------------------------------------------------- */
+let selectedFiles = []; // holds the actual File objects we'll submit
+
+const dropZone = document.getElementById("drop-zone");
+const fileInput = document.getElementById("images");
+const previewContainer = document.getElementById("image-preview");
+
+if (dropZone && fileInput) {
+  // Click zone -> open file browser
+  dropZone.addEventListener("click", () => fileInput.click());
+
+  // Dragging visuals
+  dropZone.addEventListener("dragover", (e) => {
+    e.preventDefault();
+    dropZone.classList.add("drag-over");
+  });
+  dropZone.addEventListener("dragleave", () => {
+    dropZone.classList.remove("drag-over");
+  });
+
+  // Drop files
+  dropZone.addEventListener("drop", (e) => {
+    e.preventDefault();
+    dropZone.classList.remove("drag-over");
+    const files = Array.from(e.dataTransfer.files).filter((f) => f.type.startsWith("image/"));
+    addFiles(files);
+  });
+
+  // Browse selection
+  fileInput.addEventListener("change", (e) => {
+    const files = Array.from(e.target.files);
+    addFiles(files);
+    fileInput.value = ""; // reset so the same file can be re-selected if removed
+  });
+}
+
+function addFiles(newFiles) {
+  selectedFiles = selectedFiles.concat(newFiles);
+  renderPreviews();
+}
+
+function removeFile(index) {
+  selectedFiles.splice(index, 1);
+  renderPreviews();
+}
+
+function renderPreviews() {
+  if (!previewContainer) return;
+  previewContainer.innerHTML = selectedFiles
+    .map((file, index) => {
+      const url = URL.createObjectURL(file);
+      return `
+        <div class="preview-thumb">
+          <img src="${url}" alt="${file.name}"/>
+          <button type="button" class="remove-btn" data-index="${index}">&times;</button>
+        </div>
+      `;
+    })
+    .join("");
+
+  previewContainer.querySelectorAll(".remove-btn").forEach((btn) => {
+    btn.addEventListener("click", (e) => {
+      e.stopPropagation();
+      removeFile(Number(btn.dataset.index));
+    });
+  });
+}
+
+/* ---------------------------------------------------------
+   Load & render all records
+--------------------------------------------------------- */
 async function loadRecords() {
   const tbody = document.getElementById("records-table-body");
   try {
@@ -83,7 +155,9 @@ function attachRowListeners() {
   });
 }
 
-// ---------- View details modal ----------
+/* ---------------------------------------------------------
+   View details modal
+--------------------------------------------------------- */
 async function showDetails(id) {
   try {
     const res = await fetch(`${RECORDS_API}/${id}`, {
@@ -121,7 +195,9 @@ async function showDetails(id) {
   }
 }
 
-// ---------- Delete a record ----------
+/* ---------------------------------------------------------
+   Delete a record
+--------------------------------------------------------- */
 async function deleteRecord(id) {
   if (!confirm("Are you sure you want to delete this record?")) return;
 
@@ -144,7 +220,9 @@ async function deleteRecord(id) {
   }
 }
 
-// ---------- Add new record ----------
+/* ---------------------------------------------------------
+   Add new record
+--------------------------------------------------------- */
 const addForm = document.getElementById("add-record-form");
 if (addForm) {
   addForm.addEventListener("submit", async (e) => {
@@ -152,10 +230,9 @@ if (addForm) {
 
     const visaNo = document.getElementById("visaNo").value.trim();
     const passportNo = document.getElementById("passportNo").value.trim();
-    const imageFiles = document.getElementById("images").files;
     const submitBtn = document.getElementById("add-record-btn");
 
-    if (imageFiles.length === 0) {
+    if (selectedFiles.length === 0) {
       showPanelAlert("Please select at least one image");
       return;
     }
@@ -163,9 +240,7 @@ if (addForm) {
     const formData = new FormData();
     formData.append("visaNo", visaNo);
     formData.append("passportNo", passportNo);
-    for (const file of imageFiles) {
-      formData.append("images", file); // must match upload.array('images', 10)
-    }
+    selectedFiles.forEach((file) => formData.append("images", file));
 
     submitBtn.disabled = true;
     submitBtn.textContent = "Uploading...";
@@ -173,7 +248,7 @@ if (addForm) {
     try {
       const res = await fetch(RECORDS_API, {
         method: "POST",
-        headers: { Authorization: `Bearer ${getAuthToken()}` }, // no Content-Type — browser sets it for FormData
+        headers: { Authorization: `Bearer ${getAuthToken()}` },
         body: formData,
       });
       const data = await res.json();
@@ -185,6 +260,8 @@ if (addForm) {
 
       showPanelAlert("Record added successfully!", "success");
       addForm.reset();
+      selectedFiles = [];
+      renderPreviews();
       loadRecords();
     } catch (error) {
       console.error(error);
@@ -196,5 +273,7 @@ if (addForm) {
   });
 }
 
-// ---------- Init ----------
+/* ---------------------------------------------------------
+   Init
+--------------------------------------------------------- */
 document.addEventListener("DOMContentLoaded", loadRecords);

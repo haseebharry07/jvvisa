@@ -45,7 +45,17 @@
                             </div>
                             <div class="col-12">
                                 <label class="form-label fw-semibold">Images (you can select multiple)</label>
-                                <input type="file" class="form-control" id="images" accept="image/*" multiple required/>
+
+                                <!-- Drag & Drop Zone -->
+                                <div id="drop-zone" class="drop-zone text-center p-5 border border-2 border-dashed rounded bg-light">
+                                    <i class="fa fa-cloud-upload-alt fa-3x text-primary mb-3"></i>
+                                    <p class="fw-semibold mb-1">Drag & drop images here</p>
+                                    <p class="text-muted small mb-0">or click to browse from your device</p>
+                                    <input type="file" id="images" accept="image/*" multiple required class="d-none"/>
+                                </div>
+
+                                <!-- Preview of selected images -->
+                                <div id="image-preview" class="d-flex flex-wrap gap-2 mt-3"></div>
                             </div>
                         </div>
                         <button type="submit" class="btn btn-primary mt-4 px-4" id="add-record-btn">
