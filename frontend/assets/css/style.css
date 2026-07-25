@@ -1,0 +1,359 @@
+/* Custom Styles for JV VISA Clone */
+
+:root {
+    --primary-color: #003cff;
+    --primary-hover: #002ecc;
+    --secondary-color: #6c757d;
+    --dark-color: #1a1e21;
+    --light-color: #f8f9fa;
+    --border-color: #e9ecef;
+}
+
+body {
+    font-family: 'Segoe UI', Roboto, -apple-system, BlinkMacSystemFont, sans-serif;
+    color: #333333;
+    overflow-x: hidden;
+    background-color: #ffffff;
+}
+
+/* ==========================================================================
+   Preloader Styles
+   ========================================================================== */
+#preloader {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #ffffff;
+    z-index: 999999;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    transition: opacity 0.6s ease, visibility 0.6s ease;
+}
+
+#preloader.fade-out {
+    opacity: 0;
+    visibility: hidden;
+}
+
+.spinner-wrapper {
+    position: relative;
+    width: 130px;
+    height: 130px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.spinner-ring {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border: 4px solid rgba(0, 60, 255, 0.1);
+    border-top: 4px solid var(--primary-color);
+    border-right: 4px solid var(--primary-color);
+    border-radius: 50%;
+    animation: spin 1.2s cubic-bezier(0.68, -0.55, 0.265, 1.55) infinite;
+}
+
+.spinner-logo {
+    width: 75px;
+    height: auto;
+    object-fit: contain;
+    animation: logoPulse 1.5s ease-in-out infinite alternate;
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes logoPulse {
+    0% {
+        transform: scale(0.92);
+        filter: drop-shadow(0 0 2px rgba(0, 60, 255, 0.2));
+    }
+    100% {
+        transform: scale(1.08);
+        filter: drop-shadow(0 0 10px rgba(0, 60, 255, 0.6));
+    }
+}
+
+.preloader-text {
+    margin-top: 20px;
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--primary-color);
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+/* ==========================================================================
+   Header & Navbar
+   ========================================================================== */
+.o_header_standard {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.o_grid_header_3_cols {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.navbar-brand img {
+    max-height: 45px;
+    width: auto;
+
+}
+
+.nav-pills .nav-link {
+    color: #495057;
+    font-weight: 500;
+    padding: 8px 18px;
+    border-radius: 20px;
+    transition: all 0.3s ease;
+}
+
+.nav-pills .nav-link:hover {
+    color: var(--primary-color);
+    background-color: rgba(0, 60, 255, 0.05);
+}
+
+.nav-pills .nav-link.active {
+    color: #ffffff !important;
+    background-color: var(--primary-color) !important;
+}
+
+.btn_cta {
+    background-color: var(--primary-color);
+    border-color: var(--primary-color);
+    font-weight: 600;
+    padding: 8px 20px;
+    border-radius: 4px;
+    transition: all 0.3s ease;
+}
+
+.btn_cta:hover {
+    background-color: var(--primary-hover);
+    border-color: var(--primary-hover);
+    transform: translateY(-1px);
+
+}
+
+/* ==========================================================================
+   Hero Banner & Section Features
+   ========================================================================== */
+.hero-banner-wrapper {
+    overflow: hidden;
+}
+
+.hero-banner-img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    display: block;
+}
+
+.feature-box {
+    background: #ffffff;
+    border-radius: 8px;
+    padding: 32px 20px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 2px 8px 0px;
+}
+
+.feature-box:hover {
+    transform: translateY(-5px);
+    box-shadow: rgba(0, 0, 0, 0.18) 0px 8px 16px 0px;
+}
+
+.feature-icon {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background-color: #f0f4ff;
+    color: var(--primary-color);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+    margin-bottom: 15px;
+}
+
+/* ==========================================================================
+   Callout Banner
+   ========================================================================== */
+.callout-banner {
+    background-color: rgb(0, 60, 255);
+    color: #ffffff;
+    padding: 30px 20px;
+    text-align: center;
+}
+
+/* ==========================================================================
+   Country Cards
+   ========================================================================== */
+.country-card {
+    position: relative;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    transition: all 0.3s ease;
+    margin-bottom: 20px;
+    background-color: #fff;
+}
+
+.country-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
+
+.country-card img {
+    width: 100%;
+    height: 220px;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+.country-card:hover img {
+    transform: scale(1.05);
+}
+
+.country-card-body {
+    padding: 15px;
+    text-align: center;
+    background: #ffffff;
+}
+
+/* ==========================================================================
+   Visa Verification Section
+   ========================================================================== */
+.verification-card {
+    background: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+    border: 1px solid var(--border-color);
+    padding: 35px;
+}
+
+.verification-result-box {
+    border-radius: 10px;
+    border: 2px dashed var(--primary-color);
+    background: #f8fbff;
+    padding: 25px;
+    margin-top: 25px;
+    display: none;
+}
+
+.verification-result-box.active {
+    display: block;
+    animation: fadeIn 0.5s ease;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10deg); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.badge-verified {
+    background-color: #198754;
+    color: #ffffff;
+    padding: 8px 16px;
+    border-radius: 30px;
+    font-size: 14px;
+    font-weight: 600;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.badge-notfound {
+    background-color: #dc3545;
+    color: #ffffff;
+    padding: 8px 16px;
+    border-radius: 30px;
+    font-size: 14px;
+    font-weight: 600;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.sample-badge {
+    cursor: pointer;
+    background: #eef2ff;
+    color: var(--primary-color);
+    border: 1px solid rgba(0, 60, 255, 0.2);
+    padding: 4px 10px;
+    border-radius: 15px;
+    font-size: 12px;
+    transition: all 0.2s ease;
+}
+
+.sample-badge:hover {
+    background: var(--primary-color);
+    color: #ffffff;
+}
+
+/* ==========================================================================
+   Footer & Scroll to Top
+   ========================================================================== */
+.o_footer {
+    background-color: #111418;
+    color: #a0a6b1;
+    padding-top: 40px;
+    padding-bottom: 30px;
+}
+
+.o_footer a {
+    color: #d1d5db;
+    text-decoration: none;
+}
+
+.o_footer a:hover {
+    color: #ffffff;
+}
+
+.s_social_media a {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: #212529;
+    color: #ffffff;
+    margin: 0 6px;
+    transition: all 0.3s ease;
+}
+
+.s_social_media a:hover {
+    background-color: var(--primary-color);
+    transform: translateY(-3px);
+}
+
+#o_footer_scrolltop {
+    width: 45px;
+    height: 45px;
+    position: fixed;
+    bottom: 25px;
+    right: 25px;
+    z-index: 999;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+    display: none;
+}
+
+/* Search Modal Styling */
+.search-modal-body {
+    background: #f8f9fa;
+    border-radius: 10px;
+    padding: 20px;
+}

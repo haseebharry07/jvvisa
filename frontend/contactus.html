@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <meta name="description" content="This is the contact us page of JV Visa website"/>
+    <title>Contact Us | jvvisa</title>
+    
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="assets/images/logo.png" type="image/x-icon"/>
+
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"/>
+    <!-- FontAwesome & Font Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"/>
+    
+    <!-- Custom Styles -->
+    <link rel="stylesheet" href="assets/css/style.css"/>
+</head>
+<body>
+
+    <!-- 1. Preloader Overlay with Spinning Logo -->
+    <div id="preloader">
+        <div class="spinner-wrapper">
+            <div class="spinner-ring"></div>
+            <img src="assets/images/logo.png" alt="JV Visa Logo" class="spinner-logo"/>
+        </div>
+        <div class="preloader-text">JV VISA SERVICES</div>
+    </div>
+
+    <!-- Main Container -->
+    <div id="wrapwrap">
+        
+        <!-- Header -->
+        <header id="top" class="o_header_standard bg-white">
+            
+            <!-- Desktop Navbar -->
+            <nav class="navbar navbar-expand-lg navbar-light d-none d-lg-block pt-3 shadow-sm">
+                <div class="container flex-wrap">
+                    <div class="o_grid_header_3_cols w-100 pb-3 border-bottom">
+                        <!-- Left: Search & Phone -->
+                        <ul class="navbar-nav align-items-center gap-3">
+                            <li class="nav-item">
+                                <button class="btn btn-outline-secondary rounded-circle p-2 lh-1" data-bs-toggle="modal" data-bs-target="#o_search_modal" title="Search">
+                                    <i class="fa fa-search"></i>
+                                </button>
+                            </li>
+                            <li class="nav-item">
+                                <a href="tel://+0000000000" class="nav-link text-secondary fw-semibold">
+                                    <i class="fa fa-phone me-1"></i> <small>+ 0000000000</small>
+                                </a>
+                            </li>
+                        </ul>
+                        
+                        <!-- Center: Logo -->
+                        <a href="index.html" class="navbar-brand mx-auto">
+                            <img src="assets/images/logo.png" width="95" height="40" alt="jvvisa"/>
+                        </a>
+                        
+                        <!-- Right: Sign In & Contact CTA -->
+                        <ul class="navbar-nav align-items-center gap-3 ms-auto" id="auth-nav-desktop">
+                            <li class="nav-item">
+                                <a href="login.html" class="btn btn-link text-decoration-none text-dark fw-semibold">Sign in</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="contactus.html" class="btn btn-primary btn_cta px-4">Contact Us</a>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <!-- Bottom Nav Links -->
+                    <div class="d-flex justify-content-center w-100 pt-2">
+                        <ul class="nav nav-pills">
+                            <li class="nav-item">
+                                <a href="index.html" class="nav-link">Home</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="contactus.html" class="nav-link active">Contact us</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="visa-verifications.html" class="nav-link">Visa Verifaction</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+
+            <!-- Mobile Navbar -->
+            <nav class="navbar navbar-light d-block d-lg-none shadow-sm py-2">
+                <div class="container d-flex justify-content-between align-items-center">
+                    <a href="index.html" class="navbar-brand">
+                        <img src="assets/images/logo.png" width="90" height="38" alt="jvvisa"/>
+                    </a>
+                    <button class="navbar-toggler border-0" type="button" data-bs-toggle="offcanvas" data-bs-target="#mobileMenu">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                </div>
+            </nav>
+
+            <!-- Mobile Drawer Offcanvas -->
+            <div class="offcanvas offcanvas-end" tabindex="-1" id="mobileMenu">
+                <div class="offcanvas-header border-bottom">
+                    <h5 class="offcanvas-title fw-bold text-primary">JV VISA</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                </div>
+                <div class="offcanvas-body d-flex flex-column justify-content-between">
+                    <div>
+                        <div class="mb-3">
+                            <div class="input-group">
+                                <input type="text" class="form-control" placeholder="Search..."/>
+                                <button class="btn btn-primary"><i class="fa fa-search"></i></button>
+                            </div>
+                        </div>
+                        <ul class="nav nav-pills flex-column gap-2 mb-3">
+                            <li class="nav-item">
+                                <a href="index.html" class="nav-link text-dark">Home</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="contactus.html" class="nav-link active">Contact us</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="visa-verifications.html" class="nav-link text-dark">Visa Verifaction</a>
+                            </li>
+                        </ul>
+                        <div class="pt-3 border-top">
+                            <a href="tel://+0000000000" class="nav-link text-secondary">
+                                <i class="fa fa-phone me-2"></i> + 0000000000
+                            </a>
+                        </div>
+                    </div>
+                    <div class="d-flex flex-column gap-2 pt-3 border-top" id="auth-nav-mobile">
+                        <a href="login.html" class="btn btn-outline-secondary w-100">Sign in</a>
+                        <a href="contactus.html" class="btn btn-primary btn_cta w-100">Contact Us</a>
+                    </div>
+                </div>
+            </div>
+
+        </header>
+
+        <!-- Main Content -->
+        <main>
+            <!-- Title Header Banner -->
+            <section class="bg-dark text-white py-4 position-relative">
+                <div class="container">
+                    <h1 class="fw-bold mb-0">Contact us</h1>
+                </div>
+            </section>
+
+            <!-- Contact Form & Info Section -->
+            <section class="py-5 bg-white">
+                <div class="container">
+                    <div class="row g-5">
+                        
+                        <!-- Left Column: Contact Form -->
+                        <div class="col-lg-8">
+                            <p class="text-secondary mb-4">
+                                Contact us about anything related to our company or services.<br/>
+                                We'll do our best to get back to you as soon as possible.
+                            </p>
+
+                            <form id="contactus_form" class="needs-validation">
+                                <div class="row g-3">
+                                    
+                                    <!-- Name -->
+                                    <div class="col-12">
+                                        <div class="row align-items-center">
+                                            <label for="contact1" class="col-sm-3 col-form-label fw-semibold">
+                                                Name <span class="text-danger">*</span>
+                                            </label>
+                                            <div class="col-sm-9">
+                                                <input type="text" id="contact1" name="name" class="form-control" required/>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- Phone Number -->
+                                    <div class="col-12">
+                                        <div class="row align-items-center">
+                                            <label for="contact2" class="col-sm-3 col-form-label fw-semibold">
+                                                Phone Number
+                                            </label>
+                                            <div class="col-sm-9">
+                                                <input type="tel" id="contact2" name="phone" class="form-control"/>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- Email -->
+                                    <div class="col-12">
+                                        <div class="row align-items-center">
+                                            <label for="contact3" class="col-sm-3 col-form-label fw-semibold">
+                                                Email <span class="text-danger">*</span>
+                                            </label>
+                                            <div class="col-sm-9">
+                                                <input type="email" id="contact3" name="email_from" class="form-control" required/>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- Company -->
+                                    <div class="col-12">
+                                        <div class="row align-items-center">
+                                            <label for="contact4" class="col-sm-3 col-form-label fw-semibold">
+                                                Company
+                                            </label>
+                                            <div class="col-sm-9">
+                                                <input type="text" id="contact4" name="company" class="form-control"/>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- Subject -->
+                                    <div class="col-12">
+                                        <div class="row align-items-center">
+                                            <label for="contact5" class="col-sm-3 col-form-label fw-semibold">
+                                                Subject <span class="text-danger">*</span>
+                                            </label>
+                                            <div class="col-sm-9">
+                                                <input type="text" id="contact5" name="subject" class="form-control" required/>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- Question -->
+                                    <div class="col-12">
+                                        <div class="row">
+                                            <label for="contact6" class="col-sm-3 col-form-label fw-semibold">
+                                                Question <span class="text-danger">*</span>
+                                            </label>
+                                            <div class="col-sm-9">
+                                                <textarea id="contact6" name="description" rows="4" class="form-control" required></textarea>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- Submit Button -->
+                                    <div class="col-12">
+                                        <div class="row">
+                                            <div class="col-sm-9 offset-sm-3">
+                                                <button type="submit" class="btn btn-primary s_website_form_send px-4 py-2">Submit</button>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </form>
+                        </div>
+
+                        <!-- Right Column: Info Sidebar -->
+                        <div class="col-lg-4">
+                            <div class="p-4 bg-light rounded shadow-sm">
+                                <h5 class="fw-bold mb-3 text-dark">My Company</h5>
+                                <ul class="list-unstyled mb-0 d-flex flex-column gap-3">
+                                    <li class="d-flex align-items-start gap-2 text-secondary">
+                                        <i class="fa fa-map-marker-alt text-primary mt-1"></i>
+                                        <span>3575 Fake Buena Vista Avenue</span>
+                                    </li>
+                                    <li class="d-flex align-items-center gap-2 text-secondary">
+                                        <i class="fa fa-phone text-primary"></i>
+                                        <span>+0000000</span>
+                                    </li>
+                                    <li class="d-flex align-items-center gap-2 text-secondary">
+                                        <i class="fa fa-envelope text-primary"></i>
+                                        <a href="mailto:jvvisa596@gmail.com" class="text-decoration-none text-secondary">jvvisa596@gmail.com</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <!-- Footer -->
+        <footer id="bottom" class="o_footer">
+            <div class="container text-center">
+                <!-- Social Links -->
+                <div class="s_social_media mb-4">
+                    <a href="https://facebook.com" target="_blank" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                    <a href="https://twitter.com" target="_blank" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                    <a href="https://linkedin.com" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                </div>
+
+                <!-- Contact Phone & Email -->
+                <ul class="list-inline mb-4">
+                    <li class="list-inline-item mx-3 fs-6">
+                        <i class="fa fa-phone me-2 text-primary"></i>
+                        <a href="tel://+0000000000">+0000000000</a>
+                    </li>
+                    <li class="list-inline-item mx-3 fs-6">
+                        <i class="fa fa-envelope me-2 text-primary"></i>
+                        <a href="mailto:jvvisa596@gmail.com">jvvisa596@gmail.com</a>
+                    </li>
+                </ul>
+
+                <!-- Footer Logo -->
+                <div class="row justify-content-center mb-3">
+                    <div class="col-6 col-md-2">
+                        <a href="index.html">
+                            <img src="assets/images/footer-logo.png" alt="JV Visa Footer Logo" class="img-fluid mx-auto"/>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="pt-3 border-top border-secondary text-muted small">
+                    &copy; 2026 JV VISA. All rights reserved.
+                </div>
+            </div>
+
+            <!-- Scroll To Top Button -->
+            <a id="o_footer_scrolltop" href="#" title="Scroll To Top" class="btn btn-primary rounded-circle d-flex align-items-center justify-content-center">
+                <i class="fa fa-chevron-up"></i>
+            </a>
+        </footer>
+
+    </div>
+
+    <!-- Search Modal -->
+    <div class="modal fade" id="o_search_modal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-lg pt-5">
+            <div class="modal-content border-0 shadow">
+                <div class="modal-body p-4">
+                    <div class="input-group input-group-lg">
+                        <input type="search" class="form-control border-0 bg-light" placeholder="Search JV Visa Services..."/>
+                        <button class="btn btn-primary px-4" type="button"><i class="fa fa-search"></i></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap 5 Bundle JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Custom JS -->
+    <script src="assets/js/main.js"></script>
+    <!-- Auth JS -->
+    <script src="assets/js/auth.js"></script>
+</body>
+</html>

@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <meta name="description" content="Create your JV Visa account"/>
+    <title>Sign Up | jvvisa</title>
+
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="assets/images/logo.png" type="image/x-icon"/>
+
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"/>
+    <!-- FontAwesome & Font Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"/>
+
+    <!-- Custom Styles -->
+    <link rel="stylesheet" href="assets/css/style.css"/>
+</head>
+<body>
+
+    <!-- Preloader Overlay with Spinning Logo -->
+    <div id="preloader">
+        <div class="spinner-wrapper">
+            <div class="spinner-ring"></div>
+            <img src="assets/images/logo.png" alt="JV Visa Logo" class="spinner-logo"/>
+        </div>
+        <div class="preloader-text">JV VISA SERVICES</div>
+    </div>
+
+    <!-- Main Container -->
+    <div id="wrapwrap">
+
+        <!-- Header -->
+        <header id="top" class="o_header_standard bg-white">
+
+            <!-- Desktop Navbar -->
+            <nav class="navbar navbar-expand-lg navbar-light d-none d-lg-block pt-3 shadow-sm">
+                <div class="container flex-wrap">
+                    <div class="o_grid_header_3_cols w-100 pb-3 border-bottom">
+                        <ul class="navbar-nav align-items-center gap-3">
+                            <li class="nav-item">
+                                <a href="tel://+0000000000" class="nav-link text-secondary fw-semibold">
+                                    <i class="fa fa-phone me-1"></i> <small>+ 0000000000</small>
+                                </a>
+                            </li>
+                        </ul>
+
+                        <a href="index.html" class="navbar-brand mx-auto">
+                            <img src="assets/images/logo.png" width="95" height="40" alt="jvvisa"/>
+                        </a>
+
+                        <ul class="navbar-nav align-items-center gap-3 ms-auto" id="auth-nav-desktop">
+                            <li class="nav-item">
+                                <a href="login.html" class="btn btn-link text-decoration-none text-dark fw-semibold">Sign in</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="contactus.html" class="btn btn-primary btn_cta px-4">Contact Us</a>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="d-flex justify-content-center w-100 pt-2">
+                        <ul class="nav nav-pills">
+                            <li class="nav-item">
+                                <a href="index.html" class="nav-link">Home</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="contactus.html" class="nav-link">Contact us</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="visa-verifications.html" class="nav-link">Visa Verifaction</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+
+            <!-- Mobile Navbar -->
+            <nav class="navbar navbar-light d-block d-lg-none shadow-sm py-2">
+                <div class="container d-flex justify-content-between align-items-center">
+                    <a href="index.html" class="navbar-brand">
+                        <img src="assets/images/logo.png" width="90" height="38" alt="jvvisa"/>
+                    </a>
+                    <button class="navbar-toggler border-0" type="button" data-bs-toggle="offcanvas" data-bs-target="#mobileMenu">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                </div>
+            </nav>
+
+            <!-- Mobile Drawer Offcanvas -->
+            <div class="offcanvas offcanvas-end" tabindex="-1" id="mobileMenu">
+                <div class="offcanvas-header border-bottom">
+                    <h5 class="offcanvas-title fw-bold text-primary">JV VISA</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                </div>
+                <div class="offcanvas-body d-flex flex-column justify-content-between">
+                    <div>
+                        <ul class="nav nav-pills flex-column gap-2 mb-3">
+                            <li class="nav-item"><a href="index.html" class="nav-link text-dark">Home</a></li>
+                            <li class="nav-item"><a href="contactus.html" class="nav-link text-dark">Contact us</a></li>
+                            <li class="nav-item"><a href="visa-verifications.html" class="nav-link text-dark">Visa Verifaction</a></li>
+                        </ul>
+                    </div>
+                    <div class="d-flex flex-column gap-2 pt-3 border-top" id="auth-nav-mobile">
+                        <a href="login.html" class="btn btn-outline-secondary w-100">Sign in</a>
+                        <a href="contactus.html" class="btn btn-primary btn_cta w-100">Contact Us</a>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <!-- Main Content -->
+        <main>
+            <section class="py-5 bg-light" style="min-height: 70vh;">
+                <div class="container">
+                    <div class="row justify-content-center">
+                        <div class="col-md-6 col-lg-5">
+                            <div class="card border-0 shadow-sm p-4">
+                                <div class="card-body">
+                                    <h2 class="fw-bold text-center mb-1">Create Account</h2>
+                                    <p class="text-muted text-center mb-4">Sign up for your JV Visa account</p>
+
+                                    <div id="signup-alert" class="alert d-none" role="alert"></div>
+
+                                    <form id="signup-form" novalidate>
+                                        <div class="mb-3">
+                                            <label for="name" class="form-label fw-semibold">Full Name</label>
+                                            <input type="text" class="form-control" id="name" name="name" required placeholder="Your full name"/>
+                                        </div>
+                                        <div class="mb-3">
+                                            <label for="email" class="form-label fw-semibold">Email address</label>
+                                            <input type="email" class="form-control" id="email" name="email" required placeholder="you@example.com"/>
+                                        </div>
+                                        <div class="mb-3">
+                                            <label for="password" class="form-label fw-semibold">Password</label>
+                                            <input type="password" class="form-control" id="password" name="password" required placeholder="At least 6 characters" minlength="6"/>
+                                        </div>
+                                        <div class="mb-3">
+                                            <label for="confirm-password" class="form-label fw-semibold">Confirm Password</label>
+                                            <input type="password" class="form-control" id="confirm-password" name="confirmPassword" required placeholder="Re-enter your password" minlength="6"/>
+                                        </div>
+                                        <button type="submit" class="btn btn-primary w-100 fw-semibold py-2" id="signup-submit-btn">
+                                            Sign Up
+                                        </button>
+                                    </form>
+
+                                    <p class="text-center text-muted mt-4 mb-0">
+                                        Already have an account? <a href="login.html" class="fw-semibold text-decoration-none">Login</a>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <!-- Footer -->
+        <footer id="bottom" class="o_footer">
+            <div class="container text-center">
+                <div class="s_social_media mb-4">
+                    <a href="https://facebook.com" target="_blank" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                    <a href="https://twitter.com" target="_blank" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                    <a href="https://linkedin.com" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                </div>
+                <ul class="list-inline mb-4">
+                    <li class="list-inline-item mx-3 fs-6">
+                        <i class="fa fa-phone me-2 text-primary"></i>
+                        <a href="tel://+0000000000">+0000000000</a>
+                    </li>
+                    <li class="list-inline-item mx-3 fs-6">
+                        <i class="fa fa-envelope me-2 text-primary"></i>
+                        <a href="mailto:jvvisa596@gmail.com">jvvisa596@gmail.com</a>
+                    </li>
+                </ul>
+                <div class="row justify-content-center mb-3">
+                    <div class="col-6 col-md-2">
+                        <a href="index.html">
+                            <img src="assets/images/footer-logo.png" alt="JV Visa Footer Logo" class="img-fluid mx-auto"/>
+                        </a>
+                    </div>
+                </div>
+                <div class="pt-3 border-top border-secondary text-muted small">
+                    &copy; 2026 JV VISA. All rights reserved.
+                </div>
+            </div>
+            <a id="o_footer_scrolltop" href="#" title="Scroll To Top" class="btn btn-primary rounded-circle d-flex align-items-center justify-content-center">
+                <i class="fa fa-chevron-up"></i>
+            </a>
+        </footer>
+    </div>
+
+    <!-- Bootstrap 5 Bundle JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Custom JS -->
+    <script src="assets/js/main.js"></script>
+    <!-- Auth JS -->
+    <script src="assets/js/auth.js"></script>
+</body>
+</html>
