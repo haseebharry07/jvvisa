@@ -2,6 +2,7 @@ const VERIFY_API = "/api/records/verify";
 document.addEventListener("DOMContentLoaded", () => {
   const visaForm = document.getElementById("visaVerificationForm");
   const resultBox = document.getElementById("verificationResultBox");
+  const verifyHeading = document.getElementById("verifyHeading");
 
   if (!visaForm || !resultBox) return;
 
@@ -53,38 +54,37 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   function displayFound(record) {
+    // Hide heading, form, and button once a match is found
+    if (verifyHeading) verifyHeading.style.display = "none";
+    visaForm.style.display = "none";
+
     const imagesHtml = record.images
       .map(
         (url) => `
-        <div class="col-12 mb-3">
-          <img src="${url}" alt="Visa document" class="img-fluid rounded border shadow-sm w-100" style="object-fit: contain; background: #fff;"/>
+        <div class="visa-image-wrapper mb-4">
+          <img src="${url}" alt="Visa document" class="img-fluid"/>
         </div>
       `
       )
       .join("");
 
     resultBox.innerHTML = `
-      <div class="card border-0 shadow-lg overflow-hidden my-3">
-        <div class="card-body p-4 bg-white">
-          <div class="table-responsive mb-4">
-            <table class="table table-bordered align-middle">
-              <tbody>
-                <tr>
-                  <th class="bg-light w-35 text-secondary">VISA NO</th>
-                  <td class="fw-bold fs-5 text-primary">${record.visaNo}</td>
-                </tr>
-                <tr>
-                  <th class="bg-light text-secondary">PASSPORT NUMBER</th>
-                  <td class="fw-bold fs-5 text-dark">${record.passportNo}</td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-
-          <div class="row">${imagesHtml}</div>
-        </div>
+      <div class="text-center my-3">
+        ${imagesHtml}
+        <button type="button" id="verifyAnotherBtn" class="btn btn-outline-secondary mt-2">
+          <i class="fa fa-rotate-left me-2"></i> Verify Another
+        </button>
       </div>
     `;
+
+    // Let the user come back to the form
+    document.getElementById("verifyAnotherBtn").addEventListener("click", () => {
+      visaForm.reset();
+      if (verifyHeading) verifyHeading.style.display = "";
+      visaForm.style.display = "";
+      resultBox.innerHTML = "";
+      resultBox.style.display = "none";
+    });
   }
 
   function displayNotFound(visaNo, passportNo) {
