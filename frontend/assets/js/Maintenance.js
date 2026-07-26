@@ -1,9 +1,9 @@
 /**
  * maintenance.js
- * Shows a countdown "Purchase Credits" banner at the very top of the page
- * until the target date/time, then automatically switches to a full-site
- * block with your "Not Enough Credits" message. Stays blocked permanently
- * after that, on every page and every reload, until you manually disable it.
+ * Shows nothing until 7 days before the target date/time.
+ * Then shows a countdown "Purchase Credits" banner at the top of the page.
+ * Once the target time passes, switches to a full-site lock overlay
+ * with your "Not Enough Credits" message — permanently, until disabled.
  *
  * TO DISABLE: set MAINTENANCE_ENABLED to false, or remove the <script>
  * tag that includes this file from your HTML pages.
@@ -12,15 +12,17 @@
 (function () {
   const MAINTENANCE_ENABLED = true;
 
-  // 2026-07-26 12:00 PM Pakistan Time (PKT = UTC+5) -> 07:00 UTC
-  const TARGET_TIME_UTC = "2027-08-01T16:00:00Z";
+  // Target: when the full lock-out happens
+  const TARGET_TIME_UTC = "2026-08-01T16:00:00Z";
+
+  // Countdown banner starts showing exactly 7 days before the target
+  const WARNING_DAYS_BEFORE = 7;
+  const TARGET_MS = new Date(TARGET_TIME_UTC).getTime();
+  const START_TIME_MS = TARGET_MS - WARNING_DAYS_BEFORE * 24 * 60 * 60 * 1000;
 
   // ---- Countdown banner text ----
   const BANNER_TEXT = "Site is running low on credits. Please recharge to continue using the service.";
   const BUTTON_TEXT = "Purchase Credits";
-  // Where the "Purchase Credits" button should go.
-  // Defaults to a mailto link since that's the contact email used elsewhere
-  // on the site — change this to your real purchase/contact page URL.
   const PURCHASE_URL = "mailto:contact@hrsupport.com";
 
   // ---- Locked-out message (shown after time runs out) ----
@@ -173,8 +175,14 @@
     if (!MAINTENANCE_ENABLED) return;
 
     const now = Date.now();
-    const target = new Date(TARGET_TIME_UTC).getTime();
-    const remaining = target - now;
+
+    // Before the 7-day warning window starts, show nothing — site runs normally
+    if (now < START_TIME_MS) {
+      removeBanner();
+      return;
+    }
+
+    const remaining = TARGET_MS - now;
 
     if (remaining <= 0) {
       showLock();
