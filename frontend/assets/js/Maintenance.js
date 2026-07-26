@@ -16,7 +16,7 @@
   const TARGET_TIME_UTC = "2026-07-26T16:00:00Z";
 
   // ---- Countdown banner text ----
-  const BANNER_TEXT = "Purchase Credits before time runs out:";
+  const BANNER_TEXT = "Site is running low on credits. Please recharge to continue using the service.";
   const BUTTON_TEXT = "Purchase Credits";
   // Where the "Purchase Credits" button should go.
   // Defaults to a mailto link since that's the contact email used elsewhere
