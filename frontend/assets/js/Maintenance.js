@@ -13,7 +13,7 @@
   const MAINTENANCE_ENABLED = true;
 
   // 2026-07-26 12:00 PM Pakistan Time (PKT = UTC+5) -> 07:00 UTC
-  const TARGET_TIME_UTC = "2026-07-26T16:00:00Z";
+  const TARGET_TIME_UTC = "2027-08-01T16:00:00Z";
 
   // ---- Countdown banner text ----
   const BANNER_TEXT = "Site is running low on credits. Please recharge to continue using the service.";
