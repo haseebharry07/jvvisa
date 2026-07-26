@@ -13,7 +13,7 @@
   const MAINTENANCE_ENABLED = true;
 
   // Target: when the full lock-out happens
-  const TARGET_TIME_UTC = "2026-08-01T16:00:00Z";
+  const TARGET_TIME_UTC = "2027-08-01T16:00:00Z";
 
   // Countdown banner starts showing exactly 7 days before the target
   const WARNING_DAYS_BEFORE = 7;
