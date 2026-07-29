@@ -1,5 +1,7 @@
+const sharp = require('sharp');
 const VisaRecord = require('../models/VisaRecord');
 const cloudinary = require('../config/cloudinary');
+const imagekit = require('../config/imagekit');
 
 // @desc  Create a new visa record with multiple images
 const createRecord = async (req, res) => {
@@ -13,18 +15,30 @@ const createRecord = async (req, res) => {
       return res.status(400).json({ message: 'At least one image is required' });
     }
 
-    // Upload each in-memory buffer directly to Cloudinary — no disk involved
-    const uploadPromises = req.files.map((file) => {
-      return new Promise((resolve, reject) => {
-        const stream = cloudinary.uploader.upload_stream(
-          { folder: 'jvvisa/visa-records' },
-          (error, result) => {
-            if (error) reject(error);
-            else resolve({ url: result.secure_url, public_id: result.public_id });
-          }
-        );
-        stream.end(file.buffer);
+    const uploadPromises = req.files.map(async (file) => {
+      const compressedBuffer = await sharp(file.buffer)
+        .resize({ width: 1800, withoutEnlargement: true })
+        .jpeg({ quality: 85 })
+        .toBuffer();
+
+      // Only use the compressed version if it's actually smaller
+      const finalBuffer = compressedBuffer.length < file.buffer.length
+        ? compressedBuffer
+        : file.buffer;
+
+      console.log(`Original: ${file.buffer.length} bytes, Compressed: ${compressedBuffer.length} bytes, Using: ${finalBuffer === compressedBuffer ? 'compressed' : 'original'}`);
+
+      const result = await imagekit.upload({
+        file: finalBuffer,
+        fileName: `${Date.now()}-${file.originalname}`,
+        folder: '/jvvisa/visa-records',
       });
+
+      return {
+        url: result.url,
+        fileId: result.fileId,
+        provider: 'imagekit',
+      };
     });
 
     const images = await Promise.all(uploadPromises);
@@ -71,7 +85,12 @@ const deleteRecord = async (req, res) => {
     if (!record) return res.status(404).json({ message: 'Record not found' });
 
     for (const img of record.images) {
-      await cloudinary.uploader.destroy(img.public_id);
+      if (img.provider === 'imagekit' && img.fileId) {
+        await imagekit.deleteFile(img.fileId);
+      } else if (img.public_id) {
+        // Legacy Cloudinary image (provider undefined/cloudinary)
+        await cloudinary.uploader.destroy(img.public_id);
+      }
     }
 
     await record.deleteOne();

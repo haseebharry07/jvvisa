@@ -7,7 +7,9 @@ const visaRecordSchema = new mongoose.Schema(
     images: [
       {
         url: { type: String, required: true },
-        public_id: { type: String, required: true },
+        public_id: { type: String }, // required: true removed — only used for Cloudinary images
+        fileId: { type: String },    // only used for ImageKit images
+        provider: { type: String, enum: ['cloudinary', 'imagekit'], default: 'cloudinary' },
       },
     ],
   },
